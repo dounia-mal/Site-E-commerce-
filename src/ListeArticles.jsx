@@ -13,7 +13,7 @@ function ListeArticles({ articles, onAjouterPanier = () => {} }) {
     <div>
       <div
         style={{
-          background: "linear-gradient(to bottom, #F0F3FA 0%, #D5DEEF 100%)",
+          background: "#f8f9fc",
           padding: "80px 0",
         }}
       >

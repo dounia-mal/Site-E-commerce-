@@ -1,42 +1,34 @@
 import React, { useState } from "react";
 import "./ListeArticles.css";
 
-function ListeArticles({ articles }) {
+function ListeArticles({ articles, onAjouterPanier = () => {} }) {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [categorieActive, setCategorieActive] = useState("jeans");
 
-  // 🔹 Filtrage des articles
   const articlesFiltres = articles.filter(
-    (a) => a.categorie === categorieActive
+    (a) => a.categorie === categorieActive,
   );
 
   return (
     <div>
-
-      {/* ================= SECTION ARTICLES ================= */}
       <div
         style={{
-          background: "linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%)",
+          background: "linear-gradient(to bottom, #F0F3FA 0%, #D5DEEF 100%)",
           padding: "80px 0",
         }}
       >
         <div className="container">
-
-          {/* -------- TITRE -------- */}
           <div style={{ textAlign: "center", marginBottom: "40px" }}>
             <h2
               style={{
                 fontSize: "2.5rem",
                 fontWeight: "bold",
-                background:
-                  "linear-gradient(135deg, #ccc6c0ff 0%, #685542ff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                color: "#395886",
               }}
             >
-              👗 Nos Collections
+              Nos Collections
             </h2>
-            <p style={{ color: "#6c757d" }}>
+            <p style={{ color: "#395886", opacity: 0.7 }}>
               Choisissez une catégorie pour découvrir nos articles
             </p>
           </div>
@@ -52,9 +44,9 @@ function ListeArticles({ articles }) {
             }}
           >
             {[
-              { key: "jeans", label: "👖 Jeans" },
-              { key: "robes", label: "👗 Robes" },
-              { key: "tshirt", label: "👕 T-Shirts" },
+              { key: "jeans", label: "Jeans" },
+              { key: "robes", label: "Robes" },
+              { key: "tshirt", label: "T-Shirts" },
             ].map((cat) => (
               <button
                 key={cat.key}
@@ -67,13 +59,11 @@ function ListeArticles({ articles }) {
                   fontSize: "1rem",
                   cursor: "pointer",
                   background:
-                    categorieActive === cat.key
-                      ? "linear-gradient(135deg, #FFF2DF 0%, #3E2522)"
-                      : "#edf2f7",
-                  color: categorieActive === cat.key ? "white" : "#4a5568",
+                    categorieActive === cat.key ? "#395886" : "#D5DEEF",
+                  color: categorieActive === cat.key ? "white" : "#395886",
                   boxShadow:
                     categorieActive === cat.key
-                      ? "0 8px 20px rgba(221, 167, 97, 0.4)"
+                      ? "0 8px 20px rgba(57, 88, 134, 0.4)"
                       : "none",
                   transition: "all 0.3s ease",
                 }}
@@ -91,9 +81,7 @@ function ListeArticles({ articles }) {
                 key={a.id}
                 style={{
                   opacity: 0,
-                  animation: `fadeInUp 0.6s ease-out ${
-                    index * 0.1
-                  }s forwards`,
+                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`,
                 }}
               >
                 <div
@@ -106,7 +94,7 @@ function ListeArticles({ articles }) {
                     overflow: "hidden",
                     boxShadow:
                       hoveredCard === a.id
-                        ? "0 20px 40px rgba(102, 126, 234, 0.3)"
+                        ? "0 20px 40px rgba(57, 88, 134, 0.3)"
                         : "0 4px 12px rgba(0, 0, 0, 0.08)",
                     transform:
                       hoveredCard === a.id
@@ -115,7 +103,6 @@ function ListeArticles({ articles }) {
                     transition: "all 0.4s ease",
                   }}
                 >
-                  {/* IMAGE */}
                   <div style={{ height: "250px", overflow: "hidden" }}>
                     <img
                       src={
@@ -135,7 +122,6 @@ function ListeArticles({ articles }) {
                     />
                   </div>
 
-                  {/* BODY */}
                   <div className="card-body" style={{ padding: "25px" }}>
                     <h5 style={{ fontWeight: "700", marginBottom: "15px" }}>
                       {a.nomA}
@@ -155,16 +141,39 @@ function ListeArticles({ articles }) {
                         style={{
                           fontSize: "1.6rem",
                           fontWeight: "bold",
-                          background:
-                            "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
+                          color: "#395886",
                         }}
                       >
                         {a.pu} DH
                       </span>
 
-                      <span style={{ fontSize: "22px" }}>🛒</span>
+                      <button
+                        onClick={() => onAjouterPanier(a)}
+                        style={{
+                          background: "#395886",
+                          color: "white",
+                          border: "none",
+                          padding: "10px 16px",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                          fontWeight: "600",
+                          fontSize: "0.9rem",
+                          transition: "all 0.3s ease",
+                          transform:
+                            hoveredCard === a.id ? "scale(1.05)" : "scale(1)",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.transform = "scale(1.1)";
+                          e.target.style.boxShadow =
+                            "0 6px 20px rgba(57, 88, 134, 0.4)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.transform = "scale(1)";
+                          e.target.style.boxShadow = "none";
+                        }}
+                      >
+                        Ajouter
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -181,7 +190,6 @@ function ListeArticles({ articles }) {
         </div>
       </div>
 
-      {/* ================= ANIMATIONS ================= */}
       <style>{`
         @keyframes fadeInUp {
           from {

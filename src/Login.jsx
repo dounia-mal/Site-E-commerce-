@@ -16,7 +16,7 @@ function Login({ onLogin }) {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow" style={{ width: "350px" }}>
-        <h4 className="mb-4 text-center">🔒 Connexion Dashboard</h4>
+        <h4 className="mb-4 text-center">Connexion Dashboard</h4>
         <form onSubmit={handleSubmit}>
           <input
             type="text"

@@ -29,7 +29,7 @@ function CarteAdresse() {
 
       {/* ================= FORMULAIRE ================= */}
       <div className="contact-form">
-        <h2>📩 Contactez-nous</h2>
+        <h2>Contactez-nous</h2>
         <p>Nous sommes à votre écoute. Écrivez-nous à tout moment.</p>
 
         <form onSubmit={handleSubmit}>
@@ -133,7 +133,7 @@ function CarteAdresse() {
         }
 
         .contact-form button {
-          background: linear-gradient(135deg, #667eea, #764ba2);
+          background: #395886;
           color: white;
           border: none;
           padding: 14px 30px;

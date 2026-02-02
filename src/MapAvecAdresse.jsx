@@ -8,11 +8,10 @@ const containerStyle = {
 
 function MapAvecAdresse() {
   const [coords, setCoords] = useState(null);
-  const adresse = "ISGI AZLI OFPPT MARRAKECH"; // adresse de ta société
-  const apiKey = "TA_CLE_API_ICI"; // ta clé Google Maps
+  const adresse = "ISGI AZLI OFPPT MARRAKECH";
+  const apiKey = "TA_CLE_API_ICI"; 
 
   useEffect(() => {
-    // Géocodage de l'adresse
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(adresse)}&key=${apiKey}`)
       .then(res => res.json())
       .then(data => {

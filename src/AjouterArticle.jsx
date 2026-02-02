@@ -40,7 +40,7 @@ function AjouterArticle({ articles, setArticles }) {
 
   return (
     <div className="card p-4 shadow-sm mb-5">
-      <h5>➕ Ajouter un article</h5>
+      <h5>Ajouter un article</h5>
 
       {/* NOM */}
       <div className="mb-3">
@@ -71,9 +71,9 @@ function AjouterArticle({ articles, setArticles }) {
           value={categorie}
           onChange={(e) => setCategorie(e.target.value)}
         >
-          <option value="jeans">👖 Jeans</option>
-          <option value="robes">👗 Robes</option>
-          <option value="tshirt">👕 T-Shirts</option>
+          <option value="jeans">Jeans</option>
+          <option value="robes">Robes</option>
+          <option value="tshirt">T-Shirts</option>
         </select>
       </div>
 

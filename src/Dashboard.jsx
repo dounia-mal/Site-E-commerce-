@@ -4,15 +4,30 @@ import Sidebar from "./Sidebar";
 import AjouterArticle from "./AjouterArticle";
 import GestionArticles from "./GestionArticles";
 
-function Dashboard({ articles, setArticles }) {
+function Dashboard({ articles, setArticles, onLogout }) {
   return (
     <div className="d-flex">
-      <Sidebar />
+      <Sidebar onLogout={onLogout} />
       <div className="flex-grow-1 p-4">
         <Routes>
-          <Route path="/" element={<GestionArticles articles={articles} setArticles={setArticles} />} />
-          <Route path="ajouter" element={<AjouterArticle articles={articles} setArticles={setArticles} />} />
-          <Route path="gestion" element={<GestionArticles articles={articles} setArticles={setArticles} />} />
+          <Route
+            path="/"
+            element={
+              <GestionArticles articles={articles} setArticles={setArticles} />
+            }
+          />
+          <Route
+            path="ajouter"
+            element={
+              <AjouterArticle articles={articles} setArticles={setArticles} />
+            }
+          />
+          <Route
+            path="gestion"
+            element={
+              <GestionArticles articles={articles} setArticles={setArticles} />
+            }
+          />
         </Routes>
       </div>
     </div>
